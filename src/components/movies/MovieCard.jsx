@@ -24,7 +24,7 @@ export default function MovieCard({ show, onSeeDetails }) {
                     {show.title}
                 </h3>
 
-                <div className="flex items-center gap-3 font-body text-xs text-muted">
+                <div className="flex items-center justify-between font-body text-xs text-muted">
                     <span className="flex items-center gap-2">
                         <FaStar className="text-amber-300" />{show.rating ?? "—"}
                     </span>

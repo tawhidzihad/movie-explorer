@@ -1,27 +1,17 @@
 import { useState } from "react";
+import { IoArrowBack } from "react-icons/io5";
 import { useNavigate } from "react-router";
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/Navbar";
 import MovieGrid from "../components/movies/MovieGrid";
 import MovieModal from "../components/movies/MovieModal";
 import SearchBar from "../components/movies/SearchBar";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useMovies } from "../hooks/useMovies";
 
-function BackIcon() {
-    return (
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path
-                d="M10 3L4 8l6 5"
-                stroke="#EDECE8"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-        </svg>
-    );
-}
-
 export default function MovieListing() {
+    useDocumentTitle("Movie Explorer | Movies")
+
     const navigate = useNavigate();
     const [query, setQuery] = useState("");
     const [selectedShow, setSelectedShow] = useState(null);
@@ -41,7 +31,7 @@ export default function MovieListing() {
                             aria-label="Go back"
                             className="flex shrink-0 items-center justify-center border border-line bg-surface p-3 text-paper transition-colors hover:border-marquee focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marquee"
                         >
-                            <BackIcon />
+                            <IoArrowBack />
                         </button>
 
                         <div className="flex-1">
