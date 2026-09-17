@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0F1113;
+  --color-surface: #17191C;
+  --color-line: #2A2D31;
+  --color-paper: #EDECE8;
+  --color-muted: #8B8D91;
+  --color-marquee: #E8A33D;
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --tracking-wide2: 0.06em;
+}
