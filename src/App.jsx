@@ -12,19 +12,19 @@ const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home,
+            },
+            {
+                path: "movies",
+                Component: MovieListing,
             }
         ]
-    },
-    {
-        path: "/movies",
-        Component: MovieListing
     }
 ]);
 
 function Router() {
     return (
         <RouterProvider router={router} />
-    )
+    );
 }
 
-export default Router
+export default Router;
