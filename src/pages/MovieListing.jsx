@@ -4,7 +4,7 @@ import MovieGrid from "../components/movies/MovieGrid";
 import MovieModal from "../components/movies/MovieModal";
 import SearchBar from "../components/movies/SearchBar";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
-import { useMovies } from "../hooks/useMovies";
+import { useMoviesPaginated } from "../hooks/useMoviesPaginated";
 
 export default function MovieListing() {
   useDocumentTitle("Catalogue — MovieExplorer");
@@ -12,7 +12,7 @@ export default function MovieListing() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
   const [selected, setSelected] = useState(null);
-  const { shows, loading, error } = useMovies(query);
+  const { shows, loading, error, loadMore, hasMore, page } = useMoviesPaginated(query);
 
   const handleQueryChange = (val) => {
     setSearchParams(val ? { q: val } : {});
@@ -32,7 +32,20 @@ export default function MovieListing() {
         <SearchBar value={query} onChange={handleQueryChange} />
       </header>
 
-      <MovieGrid shows={shows} loading={loading} error={error} onOpen={setSelected} />
+      <MovieGrid
+        shows={shows}
+        loading={loading}
+        error={error}
+        onOpen={setSelected}
+        hasMore={hasMore}
+        onLoadMore={loadMore}
+      />
+
+      {shows.length > 0 && hasMore && (
+        <p className="mt-6 text-center text-xs text-ink-3">
+          Showing {shows.length} titles — page {page}
+        </p>
+      )}
 
       <MovieModal show={selected} onClose={() => setSelected(null)} />
     </main>

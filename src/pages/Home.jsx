@@ -1,18 +1,17 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router";
-import HeroBanner from "../components/home/HeroBanner";
+import HeroCarousel from "../components/home/HeroCarousel";
 import RankedList from "../components/home/RankedList";
 import MovieGrid from "../components/movies/MovieGrid";
 import MovieModal from "../components/movies/MovieModal";
 import SectionHead from "../components/layout/SectionHead";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
-import { useMovies } from "../hooks/useMovies";
+import { useMoviesPaginated } from "../hooks/useMoviesPaginated";
 
 export default function Home() {
   useDocumentTitle("MovieExplorer — A catalogue of films and television");
 
   const [selected, setSelected] = useState(null);
-  const { shows, loading, error } = useMovies("");
+  const { shows, loading, error, loadMore, hasMore, page } = useMoviesPaginated("");
 
   const topTen = useMemo(
     () =>
@@ -23,7 +22,21 @@ export default function Home() {
     [shows]
   );
 
-  const featured = topTen[0];
+  const byGenre = (genre) =>
+    shows
+      .filter((s) =>
+        s.genres?.some((g) => g.toLowerCase().includes(genre.toLowerCase()))
+      )
+      .slice(0, 12);
+
+  const recent = useMemo(
+    () =>
+      [...shows]
+        .filter((s) => s.year && s.year !== "—")
+        .sort((a, b) => Number(b.year) - Number(a.year))
+        .slice(0, 12),
+    [shows]
+  );
 
   return (
     <main>
@@ -32,10 +45,12 @@ export default function Home() {
       )}
 
       {loading && shows.length === 0 && (
-        <p className="mx-auto max-w-6xl px-5 py-32 text-ink-3 sm:px-8">Loading the catalogue.</p>
+        <p className="mx-auto max-w-6xl px-5 py-32 text-ink-3 sm:px-8">
+          Loading the catalogue.
+        </p>
       )}
 
-      {featured && <HeroBanner show={featured} onOpen={setSelected} />}
+      <HeroCarousel shows={topTen} onOpen={setSelected} limit={5} />
 
       {topTen.length > 0 && (
         <section className="mx-auto max-w-6xl px-5 pb-24 sm:px-8">
@@ -44,21 +59,41 @@ export default function Home() {
         </section>
       )}
 
-      {shows.length > 0 && (
-        <section className="mx-auto max-w-6xl px-5 pb-32 sm:px-8">
-          <SectionHead
-            title="From the catalogue"
-            action={
-              <Link
-                to="/movies"
-                className="border-b border-hair pb-0.5 text-sm text-ink transition-colors hover:border-ink"
-              >
-                All titles
-              </Link>
-            }
-          />
-          <MovieGrid shows={shows.slice(0, 12)} onOpen={setSelected} />
-        </section>
+      {!loading && shows.length > 0 && (
+        <>
+          <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
+            <SectionHead title="Drama" note="All drama titles in the catalogue." />
+            <MovieGrid shows={byGenre("Drama")} onOpen={setSelected} />
+          </section>
+
+          <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
+            <SectionHead title="Comedy" note="From sitcoms to dark comedy." />
+            <MovieGrid shows={byGenre("Comedy")} onOpen={setSelected} />
+          </section>
+
+          <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
+            <SectionHead title="Science Fiction" note="Futures, real and imagined." />
+            <MovieGrid shows={byGenre("Science-Fiction")} onOpen={setSelected} />
+          </section>
+
+          <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
+            <SectionHead title="Recently added" note="Added to the catalogue." />
+            <MovieGrid shows={recent} onOpen={setSelected} />
+          </section>
+
+          <section className="mx-auto max-w-6xl px-5 pb-32 sm:px-8">
+            <SectionHead
+              title="From the catalogue"
+              action={<span className="text-xs text-ink-3">Page {page}</span>}
+            />
+            <MovieGrid
+              shows={shows}
+              onOpen={setSelected}
+              hasMore={hasMore}
+              onLoadMore={loadMore}
+            />
+          </section>
+        </>
       )}
 
       <MovieModal show={selected} onClose={() => setSelected(null)} />
