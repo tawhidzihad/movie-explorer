@@ -7,7 +7,7 @@ import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useMoviesPaginated } from "../hooks/useMoviesPaginated";
 
 export default function MovieListing() {
-  useDocumentTitle("Catalogue — MovieExplorer");
+  useDocumentTitle(query ? `Search: ${query} — Movies & TV Shows` : "Browse Movies & TV Shows Online | CineboxBD");
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("q") || "";

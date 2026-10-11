@@ -1,6 +1,6 @@
 ![Portfolio Preview](./public/preview.png)
 
-# 🎬 MovieExplorer
+# 🎬 CineboxBD
 
 A responsive movie/TV show explorer built with React and the [TVMaze API](https://www.tvmaze.com/api). Browse shows, search by title, and view detailed information — cast, rating, release date, genres and overview — in an interactive modal.
 
@@ -11,7 +11,7 @@ A responsive movie/TV show explorer built with React and the [TVMaze API](https:
 
 ## Overview
 
-MovieExplorer is a single-page React application with two main views:
+CineboxBD is a single-page React application with two main views:
 
 - **Home** — a landing page with a hero banner and a call-to-action into the catalog.
 - **Movies** — a searchable, paginated grid of shows pulled live from TVMaze, with a details modal for each title.

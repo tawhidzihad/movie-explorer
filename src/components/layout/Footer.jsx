@@ -36,7 +36,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           <div>
-            <p className="font-serif text-base text-ink">MovieExplorer</p>
+            <p className="font-serif text-base text-ink">CineboxBD</p>
           </div>
           {groups.map((group) => (
             <div key={group.title}>
