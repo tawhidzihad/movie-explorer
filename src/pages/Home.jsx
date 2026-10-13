@@ -8,7 +8,7 @@ import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useMoviesPaginated } from "../hooks/useMoviesPaginated";
 
 export default function Home() {
-  useDocumentTitle("Stream & Download Movies Online | CineboxBD");
+  useDocumentTitle("Stream & Download Movies Online | MOVIE EXPLORER");
 
   const [selected, setSelected] = useState(null);
   const { shows, loading, error, loadMore, hasMore, page } = useMoviesPaginated("");

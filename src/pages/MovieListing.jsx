@@ -14,7 +14,7 @@ export default function MovieListing() {
   useDocumentTitle(
     query
       ? `Search: ${query} — Movies & TV Shows`
-      : "Browse Movies & TV Shows Online | CineboxBD"
+      : "Browse Movies & TV Shows Online | MOVIE EXPLORER"
   );
 
   const { shows, loading, error, loadMore, hasMore, page } = useMoviesPaginated(query);

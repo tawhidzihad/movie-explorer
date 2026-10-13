@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
         <div className="flex items-center gap-8">
           <Link to="/" className="font-serif text-xl tracking-tight">
-            CineboxBD
+            MOVIE EXPLORER
           </Link>
           <nav className="flex items-center gap-6">
             <NavLink to="/" end className={linkClass}>

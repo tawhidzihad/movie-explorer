@@ -6,9 +6,9 @@ import { useEffect } from "react";
  */
 export function useDocumentTitle(title, { suffix = true } = {}) {
   useEffect(() => {
-    document.title = suffix ? `${title} — CineboxBD` : title;
+    document.title = suffix ? `${title} — MOVIE EXPLORER` : title;
     return () => {
-      document.title = "CineboxBD — Stream & Download Movies Online";
+      document.title = "MOVIE EXPLORER — Stream & Download Movies Online";
     };
   }, [title, suffix]);
 }
