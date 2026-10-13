@@ -1,11 +1,10 @@
-![Portfolio Preview](./public/preview.png)
+![Portfolio Preview](./public/preview.jpg)
 
 # 🎬 MOVIE EXPLORER
 
 A responsive movie/TV show explorer built with React and the [TVMaze API](https://www.tvmaze.com/api). Browse shows, search by title, and view detailed information — cast, rating, release date, genres and overview — in an interactive modal.
 
 **Live demo:** [l2-movie-explorer.vercel.app](https://l2-movie-explorer.vercel.app/)
-
 
 ---
 
@@ -28,15 +27,15 @@ All show data (posters, ratings, summaries, genres) is fetched directly from the
 
 ## Tech Stack
 
-| Category         | Technology                                                                 |
-| ----------------- | --------------------------------------------------------------------------- |
-| Framework         | [React 19](https://react.dev/)                                              |
-| Build tool        | [Vite 8](https://vite.dev/)                                                 |
-| Routing           | [React Router 8](https://reactrouter.com/)                                  |
-| Styling           | [Tailwind CSS 4](https://tailwindcss.com/) (CSS-first config, via `@tailwindcss/vite`) |
-| Icons             | [react-icons](https://react-icons.github.io/react-icons/)                   |
-| Data source       | [TVMaze API](https://www.tvmaze.com/api)                                    |
-| Linting           | ESLint, with `eslint-plugin-react-hooks` and `eslint-plugin-react-refresh`   |
+| Category    | Technology                                                                             |
+| ----------- | -------------------------------------------------------------------------------------- |
+| Framework   | [React 19](https://react.dev/)                                                         |
+| Build tool  | [Vite 8](https://vite.dev/)                                                            |
+| Routing     | [React Router 8](https://reactrouter.com/)                                             |
+| Styling     | [Tailwind CSS 4](https://tailwindcss.com/) (CSS-first config, via `@tailwindcss/vite`) |
+| Icons       | [react-icons](https://react-icons.github.io/react-icons/)                              |
+| Data source | [TVMaze API](https://www.tvmaze.com/api)                                               |
+| Linting     | ESLint, with `eslint-plugin-react-hooks` and `eslint-plugin-react-refresh`             |
 
 ## Project Structure
 
@@ -99,21 +98,21 @@ The app will be available at `http://localhost:5173` by default.
 
 ### Other scripts
 
-| Command           | Description                                  |
-| ------------------ | --------------------------------------------- |
-| `npm run dev`       | Start the Vite dev server with hot reload     |
-| `npm run build`     | Build a production bundle into `dist/`        |
-| `npm run preview`   | Preview the production build locally          |
-| `npm run lint`      | Run ESLint across the project                 |
+| Command           | Description                               |
+| ----------------- | ----------------------------------------- |
+| `npm run dev`     | Start the Vite dev server with hot reload |
+| `npm run build`   | Build a production bundle into `dist/`    |
+| `npm run preview` | Preview the production build locally      |
+| `npm run lint`    | Run ESLint across the project             |
 
 ## API Reference
 
 This project consumes the free, public [TVMaze API](https://www.tvmaze.com/api) — no API key or authentication is required.
 
-| Endpoint                     | Used for                     |
-| ------------------------------ | ------------------------------ |
-| `GET /shows`                   | Default show listing           |
-| `GET /search/shows?q={query}`  | Title search                   |
+| Endpoint                      | Used for             |
+| ----------------------------- | -------------------- |
+| `GET /shows`                  | Default show listing |
+| `GET /search/shows?q={query}` | Title search         |
 
 ## License
 
